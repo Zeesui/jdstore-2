@@ -9,8 +9,9 @@
    <thead>
      <tr>
        <td>#</td>
+       <td width="100">Pro Pic</td>
        <td>名称</td>
-       <td>描述</td>
+
        <td>库存</td>
        <td>价格</td>
        <td>选项</td>
@@ -20,8 +21,17 @@
      <% @products.each do |product| %>
      <tr>
        <td><%= product.id %></td>
+       <td>
+         <%= link_to product_path(product) do %>
+          <% if product.image.present? %>
+           <%= image_tag(product.image.thumb.url, class: "thumbnail") %>
+           <% else %>
+           <%= image_tag("http://placehold.it/200x200&text=No Pic", class: "thumbnail") %>
+          <% end %>
+         <% end %>
+       </td>
        <td><%= product.title %></td>
-       <td><%= product.description %></td>
+
        <td><%= product.quantity %></td>
        <td><%= product.price %></td>
        <td>
