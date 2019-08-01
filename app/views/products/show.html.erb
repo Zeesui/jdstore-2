@@ -17,7 +17,8 @@
       $ <%= @product.price %>
     </div>
     <div class="product-action" style="margin-top: 100px;">
-      <%= link_to("加入购物车", "#", :class => "btn btn-danger btn-md") %>
+      <%= link_to("加入购物车", add_to_cart_product_path(@product),
+         :method => :post, :class => "btn btn-md btn-danger") %>
     </div>
   </div>
 </div>
