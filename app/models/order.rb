@@ -22,6 +22,8 @@ class Order < ApplicationRecord
     self.update_columns(is_paid: true)
   end
 
+  include AASM
+
   aasm do
     state :order_placed, initial: true
     state :paid
@@ -34,7 +36,7 @@ class Order < ApplicationRecord
       transitions from: :order_placed, to: :paid
     end
 
-    evemt :ship do
+    event :ship do
       transitions from: :shipping, to: :shipped
     end
 
